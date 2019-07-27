@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class EmployeeController {
     public static Employee getEmployee(String paramId) throws SQLException, ClassNotFoundException {
@@ -28,12 +27,8 @@ public class EmployeeController {
                         result.getDate("DateOfEmployment").toLocalDate(),
                         result.getBoolean("Status"));
             }
-        }catch(SQLException ex){
-            try {
-                throw new SQLException(ex);
-            } catch (SQLException e) {
-                    e.printStackTrace();
-            }
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
         return employee;
     }
@@ -51,12 +46,9 @@ public class EmployeeController {
                         result.getDate("DateOfEmployment").toLocalDate(),
                         result.getBoolean("Status")));
             }
-        }catch(SQLException ex){
-            try {
-                throw new SQLException(ex);
-            } catch (SQLException e) {
+        } catch (SQLException e) {
                 e.printStackTrace();
-            }
+
         }
         return employees;
     }
