@@ -1,6 +1,7 @@
 package project.employeerest.model;
 
 import java.time.*;
+import java.util.Optional;
 
 public class Employee {
     private int id;
@@ -20,6 +21,34 @@ public class Employee {
         this.dateOfBirtth = dateOfBirtth;
         this.dateOfEmployment = dateOfEmployment;
         this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleInitial() {
+        return middleInitial;
+    }
+
+    public String getLastName(){
+        return lastName;
+    }
+
+    public LocalDate getDateOfBirtth() {
+        return dateOfBirtth;
+    }
+
+    public LocalDate getDateOfEmployment(){
+        return dateOfEmployment;
+    }
+
+    public Boolean getStatus(){
+        return status;
     }
 }
 

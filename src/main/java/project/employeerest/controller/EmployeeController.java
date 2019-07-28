@@ -1,5 +1,6 @@
 package project.employeerest.controller;
 
+import com.google.gson.*;
 import project.employeerest.model.Employee;
 import project.employeerest.service.ConnectionBase;
 
@@ -72,6 +73,27 @@ public class EmployeeController {
             return "Success";
         }else
             return "Failed authorization";
+    }
+
+    public static String addEmployee(String body) throws SQLException, ClassNotFoundException {
+        Employee cEmployee = new Gson().fromJson(body, Employee.class);
+
+        Connection con = ConnectionBase.get();
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO employee VALUES (NULL, ?, ?, " +
+                    "?, ?, ?, 1);");
+            ps.setString(1, cEmployee.getFirstName());
+            ps.setString(2, cEmployee.getMiddleInitial());
+            ps.setString(3,cEmployee.getLastName());
+            ps.setString(4,cEmployee.getDateOfBirtth().toString());
+            ps.setString(5, cEmployee.getDateOfEmployment().toString());
+            int result = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Fail";
+        }
+        return "Success";
     }
 }
 

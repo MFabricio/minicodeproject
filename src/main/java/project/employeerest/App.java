@@ -15,7 +15,9 @@ public class App
             return getEmployees();
         },new JsonTransformer());
         //Add
-        post("/employee", (request, response) -> "post");
+        post("/employee", (request, response) -> {
+            return addEmployee(request.body());
+        });
         //Update
         put("/employee", (request, response) -> "put");
 
@@ -23,4 +25,5 @@ public class App
             return deleteEmployee(request.params(":id"),request.headers("Auth"));
         });
     }
+
 }
