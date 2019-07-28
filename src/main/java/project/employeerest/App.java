@@ -14,12 +14,14 @@ public class App
         get("/employee", (request,response) -> {
             return getEmployees();
         },new JsonTransformer());
-        //Add
+
         post("/employee", (request, response) -> {
             return addEmployee(request.body());
         });
-        //Update
-        put("/employee", (request, response) -> "put");
+
+        put("/employee", (request, response) ->{
+            return updateEmployee(request.body());
+        });
 
         delete("/employee/:id", (request, response) -> {
             return deleteEmployee(request.params(":id"),request.headers("Auth"));

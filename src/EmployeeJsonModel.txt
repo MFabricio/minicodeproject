@@ -1,0 +1,17 @@
+{
+    "id": 4,
+    "firstName": "Howard",
+    "middleInitial": "Phillips",
+    "lastName": "Lovecraft",
+    "dateOfBirtth": {
+        "year": 1980,
+        "month": 8,
+        "day": 20
+    },
+    "dateOfEmployment": {
+        "year": 2017,
+        "month": 8,
+        "day": 7
+    },
+    "status": true
+}

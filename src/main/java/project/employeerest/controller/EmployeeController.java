@@ -87,7 +87,33 @@ public class EmployeeController {
             ps.setString(3,cEmployee.getLastName());
             ps.setString(4,cEmployee.getDateOfBirtth().toString());
             ps.setString(5, cEmployee.getDateOfEmployment().toString());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Fail";
+        }
+        return "Success";
+    }
+
+    public static String updateEmployee(String body)throws SQLException, ClassNotFoundException {
+        Employee cEmployee = new Gson().fromJson(body, Employee.class);
+
+        Connection con = ConnectionBase.get();
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE employee SET FirstName = ?, MiddleInitial = ?," +
+                    "LastName = ?, DateOfBirth = ?, DateOfEmployment = ? WHERE ID = ?");
+            ps.setString(1, cEmployee.getFirstName());
+            ps.setString(2, cEmployee.getMiddleInitial());
+            ps.setString(3,cEmployee.getLastName());
+            ps.setString(4,cEmployee.getDateOfBirtth().toString());
+            ps.setString(5, cEmployee.getDateOfEmployment().toString());
+            ps.setInt(6,cEmployee.getId());
             int result = ps.executeUpdate();
+
+            if(result == 0){
+                return "The record do not exist";
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
