@@ -112,7 +112,7 @@ public class EmployeeController {
             int result = ps.executeUpdate();
 
             if(result == 0){
-                return "The record do not exist";
+                return "Record does not exist";
             }
 
         } catch (SQLException e) {
