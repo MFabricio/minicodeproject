@@ -24,7 +24,10 @@ public class App
         });
 
         delete("/employee/:id", (request, response) -> {
-            return deleteEmployee(request.params(":id"),request.headers("Auth"));
+            if(request.headers("Auth") != null){
+                return deleteEmployee(request.params(":id"),request.headers("Auth"));
+            }else
+                return "No authorization";
         });
     }
 
